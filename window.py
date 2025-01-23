@@ -1,5 +1,7 @@
 import tkinter as tk
+import time
 from edge import Edge
+
 
 class App(tk.Frame):
 
@@ -12,7 +14,6 @@ class App(tk.Frame):
         self.nodes.append(Node(100, 200, 30))
         self.edges = []
         self.edges.append(Edge(200, 200, 250, 250, 250, 150, 301, 301, "a"))
-        #self.edges.append(Edge(200, 200, 300, 300, 2, 'b'))
         self.draw()
 
     def draw(self):
@@ -32,10 +33,18 @@ class Node:
         canvas.create_oval(self.x - self.r, self.y - self.r, self.x + self.r, self.y + self.r)
 
 
+def redraw(app: App, event = None):
+    app.canvas.delete("all")
+    app.nodes[0].x += 10
+    app.draw()
+
+
 def main():
     root: tk.Tk = tk.Tk()
     app: App = App(root)
-    app.mainloop()
+    root.bind("<space>", lambda event: redraw(app, event))
+    root.mainloop()
+
 
 if __name__ == "__main__":
     main()
