@@ -1,16 +1,21 @@
 class Automat:
 
-    def __init__(self, matrix):
+    def __init__(self, matrix, start):
         self.__matrix = matrix
         self.__inputs = {
                             "a": 0, #odpovida prvnimu poli v matici: "[[a], []]"
                             "b": 1  #odpovida druhemu poli v matici: "[[], [b]]"
                         }  
-        self.current = 0
+        self.current = start
+        self.start = start
 
     def move(self, inp: str) -> int:
         index = self.__inputs[inp]
         self.current = self.__matrix[index][self.current]
+        return self.current
+
+    def reset(self):
+        self.current = self.start
         return self.current
 
 
