@@ -26,7 +26,7 @@ def main():
 
     # Initialize Tkinter root window
     root = tk.Tk()
-    root.title("State Viewer")
+    root.title("Vizualizace automatů")
 
     # Load images from the "states" directory
     images = load_images("states")
