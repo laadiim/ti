@@ -1,3 +1,4 @@
+# model class for a finite automat
 class Automat:
 
     def __init__(self, matrix, start):
@@ -9,26 +10,13 @@ class Automat:
         self.current = start
         self.start = start
 
+    # move the automat
     def move(self, inp: str) -> int:
         index = self.__inputs[inp]
         self.current = self.__matrix[index][self.current]
         return self.current
 
+    # reset the automat
     def reset(self):
         self.current = self.start
         return self.current
-
-
-def main():
-    matrix1 = [[0, 0, 0, 3], [1, 2, 3, 3]]
-    automat1 = Automat(matrix1)
-
-    matrix2 = [[0, 0, 3, 0, 4], [1, 2, 2, 4, 4]]
-    automat2 = Automat(matrix2)
-
-    matrix3 = [[0, 0, 4, 3, 0, 7, 7, 7], [1, 2, 3, 3, 5, 6, 3, 5]]
-    automat3 = Automat(matrix3)
-
-
-if __name__ == "__main__":
-    main()
